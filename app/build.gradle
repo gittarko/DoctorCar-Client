@@ -5,11 +5,8 @@ android {
     buildToolsVersion "24.0.1"
 
     defaultConfig {
-//        applicationId "com.juma.doctorcar.client"
         minSdkVersion 15
         targetSdkVersion 23
-//        versionCode 1
-//        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -98,7 +95,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:23.3.0'
-//    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha4'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha1'
     testCompile 'junit:junit:4.12'
 
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
