@@ -1,7 +1,9 @@
-package com.juma.doctorcar.client;
+package com.juma.doctorcar.client.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.juma.doctorcar.client.R;
 
 public class MainActivity extends AppCompatActivity {
 
