@@ -46,7 +46,7 @@ android {
 
 
     productFlavors {
-        flavor_client_dev {
+        client_dev {
             applicationId "com.juma.doctorcar.client"
             versionCode 1
             versionName "1.0.0"
@@ -57,7 +57,7 @@ android {
             ]
         }
 
-        flavor_client_test {
+        client_test {
             applicationId "com.juma.doctorcar.client"
             versionCode 1
             versionName "1.0.0"
@@ -68,7 +68,7 @@ android {
             ]
         }
 
-        flavor_client_offical {
+        client_offical {
             applicationId "com.juma.doctorcar.client"
             versionCode 1
             versionName "1.0.0"
