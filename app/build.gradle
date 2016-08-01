@@ -1,23 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 24
+    compileSdkVersion 23
     buildToolsVersion "24.0.1"
 
     defaultConfig {
-        applicationId "com.juma.doctorcar.client"
+//        applicationId "com.juma.doctorcar.client"
         minSdkVersion 15
-        targetSdkVersion 24
-        versionCode 1
-        versionName "1.0.0"
+        targetSdkVersion 23
+//        versionCode 1
+//        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
     }
 
     signingConfigs {
@@ -35,6 +28,68 @@ android {
             keyPassword RELEASE_KEY_PASSWORD
         }
     }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            debuggable true
+        }
+
+        debug {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            debuggable true
+        }
+    }
+
+
+    productFlavors {
+        flavor_client_dev {
+            applicationId "com.juma.doctorcar.client"
+            versionCode 1
+            versionName "1.0.0"
+            manifestPlaceholders = [app_name        : "@string/app_name",
+                                    app             : "卡车医生",
+                                    env             : "dev",
+                                    PACKAGE_NAME    : applicationId
+            ]
+        }
+
+        flavor_client_test {
+            applicationId "com.juma.doctorcar.client"
+            versionCode 1
+            versionName "1.0.0"
+            manifestPlaceholders = [app_name        : "@string/app_name",
+                                    app             : "卡车医生",
+                                    env             : "test",
+                                    PACKAGE_NAME    : applicationId
+            ]
+        }
+
+        flavor_client_offical {
+            applicationId "com.juma.doctorcar.client"
+            versionCode 1
+            versionName "1.0.0"
+            manifestPlaceholders = [app_name        : "@string/app_name",
+                                    app             : "卡车医生",
+                                    env             : "official",
+                                    PACKAGE_NAME    : applicationId
+            ]
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.each {
+            output->
+                def file = outputs[0].outputFile
+                def newFileName = 'HelloDriver-' + variant.productFlavors[0].name + '-' + buildType.name + '-' +
+                        variant.productFlavors[0].versionName + '.apk'
+                outputs[0].outputFile = new File(file.parent, newFileName)
+        }
+    }
+
 }
 
 dependencies {
@@ -42,7 +97,13 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:24.1.1'
+    compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha4'
     testCompile 'junit:junit:4.12'
+
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.alibaba:fastjson:1.2.12'
+    compile 'com.android.support:support-v4:23.3.0'
+    compile 'com.lhl:basetools:0.0.9'
 }
