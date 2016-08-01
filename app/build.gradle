@@ -106,4 +106,5 @@ dependencies {
     compile 'com.alibaba:fastjson:1.2.12'
     compile 'com.android.support:support-v4:23.3.0'
     compile 'com.lhl:basetools:0.0.9'
+    compile files('libs/jpush-android-2.1.5.jar')
 }
