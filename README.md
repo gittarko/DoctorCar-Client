@@ -1,2 +1,2 @@
 # DoctorCar-Client
-卡车医生用户端
+卡车医生技师客户端
